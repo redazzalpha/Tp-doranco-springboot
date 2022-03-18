@@ -4,13 +4,12 @@
  */
 package com.redazzInc.spring.repos;
 
-import com.redazzInc.spring.models.Category;
+import com.redazzInc.spring.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author kyzer
  */
-public interface UserRepo extends JpaRepository<Category, Long> {
-    
+public interface UserRepo extends JpaRepository<User, String> {
 }

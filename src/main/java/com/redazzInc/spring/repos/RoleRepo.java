@@ -4,13 +4,13 @@
  */
 package com.redazzInc.spring.repos;
 
-import com.redazzInc.spring.models.Category;
+import com.redazzInc.spring.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author kyzer
  */
-public interface RoleRepo extends JpaRepository<Category, Long> {
+public interface RoleRepo extends JpaRepository<Role, String> {
     
 }
