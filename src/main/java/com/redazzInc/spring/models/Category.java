@@ -31,9 +31,9 @@ public class Category implements Serializable {
     private String category;
     
     //relationships
-    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_category", referencedColumnName = "id")
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<Product>();
     
     //constructors
     public Category(String category) {
@@ -51,10 +51,17 @@ public class Category implements Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
+
     public List<Product> getProducts() {
         return products;
     }
+
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+    public void addProduct(Product p) {
+        this.products.add(p);
+    }
+    
 }
+  

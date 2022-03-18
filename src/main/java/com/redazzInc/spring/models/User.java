@@ -70,4 +70,10 @@ public class User implements Serializable {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+    
+    //methods
+    @Override
+    public String toString() {
+        return "User{" + "username=" + username + ", passwd=" + passwd + ", active=" + active + ", roles=" + roles + '}';
+    }
 }

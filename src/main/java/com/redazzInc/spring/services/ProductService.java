@@ -9,11 +9,13 @@ import com.redazzInc.spring.repos.ProductRepo;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author kyzer
  */
+@Service
 public class ProductService {
     //properties
     @Autowired ProductRepo pr;
@@ -30,6 +32,9 @@ public class ProductService {
     }
     public Product readOneById(Long id) {
         return pr.getById(id);
+    }
+    public List<Product> readByTitle(String title) {
+        return pr.findByTitle(title);
     }
     public void remove(Product u) {
         pr.delete(u);

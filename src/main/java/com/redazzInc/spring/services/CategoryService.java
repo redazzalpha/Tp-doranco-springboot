@@ -9,11 +9,13 @@ import com.redazzInc.spring.repos.CategoryRepo;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author kyzer
  */
+@Service
 public class CategoryService {
     //properties
     @Autowired CategoryRepo cr;

@@ -6,13 +6,20 @@ package com.redazzInc.spring.models;
 
 import com.redazzInc.spring.enums.Delivery;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -61,5 +68,11 @@ public class Product implements Serializable {
     }
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
+    }
+    
+    //methods
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", title=" + title + ", description=" + description + ", delivery=" + delivery + '}';
     }
 }

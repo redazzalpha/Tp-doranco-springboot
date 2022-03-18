@@ -9,11 +9,13 @@ import com.redazzInc.spring.repos.RoleRepo;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author kyzer
  */
+@Service
 public class RoleService {
     //properties
     @Autowired RoleRepo rr;
@@ -37,5 +39,4 @@ public class RoleService {
     public void removeAll() {
         rr.deleteAll();
     }
-
 }

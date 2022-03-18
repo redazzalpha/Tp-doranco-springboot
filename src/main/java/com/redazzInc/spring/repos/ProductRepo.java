@@ -4,8 +4,8 @@
  */
 package com.redazzInc.spring.repos;
 
-import com.redazzInc.spring.models.Category;
 import com.redazzInc.spring.models.Product;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author kyzer
  */
 public interface ProductRepo extends JpaRepository<Product, Long> {
-    
+    public List<Product> findByTitle(String title);
 }
