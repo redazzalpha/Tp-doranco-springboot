@@ -4,9 +4,12 @@
  */
 package com.redazzInc.spring.models;
 
+import com.redazzInc.spring.enums.Delivery;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,6 +29,37 @@ public class Product implements Serializable {
     @Column(nullable = false)
     private String description;
     @Column(nullable = false, length = 10)
-    private String delivery;
-
+    @Enumerated(EnumType.STRING)
+    private Delivery delivery;
+    
+    //constructors
+    public Product(String title, String description, Delivery delivery) {
+        this.title = title;
+        this.description = description;
+        this.delivery = delivery;
+    }
+    public Product() {}
+    
+    //getters & setters
+    public long getId() {
+        return id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public Delivery getDelivery() {
+        return delivery;
+    }
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
 }
