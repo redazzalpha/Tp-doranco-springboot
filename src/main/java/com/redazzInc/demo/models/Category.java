@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.redazzInc.spring.models;
+package com.redazzInc.demo.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,8 +32,8 @@ public class Category  implements Serializable {
     
     //relationships
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false)
-    private List<Product> products;
+    @JoinColumn(name = "id_category", referencedColumnName = "id")
+    private List<Product> products = new ArrayList<>();
     
     //constructors
     public Category(String category, List<Product> products) {

@@ -1,10 +1,10 @@
-package com.redazzInc.spring;
+package com.redazzInc.demo;
 
-import com.redazzInc.spring.enums.Delivery;
-import com.redazzInc.spring.models.Category;
-import com.redazzInc.spring.models.Product;
-import com.redazzInc.spring.services.CategoryService;
-import com.redazzInc.spring.services.ProductService;
+import com.redazzInc.demo.enums.Delivery;
+import com.redazzInc.demo.models.Category;
+import com.redazzInc.demo.models.Product;
+import com.redazzInc.demo.services.CategoryService;
+import com.redazzInc.demo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +17,7 @@ public class Application implements CommandLineRunner {
     @Autowired ProductService ps;
     
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args); 
     }
 
     @Override

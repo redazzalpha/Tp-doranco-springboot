@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.redazzInc.spring.models;
+package com.redazzInc.demo.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 /**
@@ -27,11 +27,9 @@ public class User implements Serializable {
     private int active;
     @Column(nullable = false)
     private String password;
-    
     //relationships
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "test")
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
     
     //constructors
     public User(String username, int active, String password, List<Role> roles) {

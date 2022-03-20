@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.redazzInc.spring.services;
+package com.redazzInc.demo.services;
 
-import com.redazzInc.spring.models.User;
-import com.redazzInc.spring.repos.UserRepo;
+import com.redazzInc.demo.models.User;
+import com.redazzInc.demo.repos.UserRepo;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
