@@ -13,5 +13,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author kyzer
  */
 public interface ProductRepo extends JpaRepository<Product, Long> {
-    public List<Product> findByTitle(String title);
+    // use the root "findBy"  and add property name
+    //starting with uppercase to create custom service function
+    //for example if class has properties: "private int age;"
+    //can create function:  List<Product>findByAge(int age);"
+    public List<Product> findByTitle(String title); 
 }
