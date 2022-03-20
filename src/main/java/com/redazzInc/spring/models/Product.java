@@ -6,27 +6,20 @@ package com.redazzInc.spring.models;
 
 import com.redazzInc.spring.enums.Delivery;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author kyzer
  */
 @Entity
-public class Product implements Serializable {
+public class Product  implements Serializable {
     //properties
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +28,10 @@ public class Product implements Serializable {
     private String title;
     @Column(nullable = false)
     private String description;
-    @Column(nullable = false, length = 10)
+    @Column(length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
     private Delivery delivery;
-    
+
     //constructors
     public Product(String title, String description, Delivery delivery) {
         this.title = title;
@@ -47,9 +40,12 @@ public class Product implements Serializable {
     }
     public Product() {}
     
-    //getters & setters
+    //setters & getters
     public long getId() {
         return id;
+    }
+    public void setId(long id) {
+        this.id = id;
     }
     public String getTitle() {
         return title;
@@ -68,11 +64,5 @@ public class Product implements Serializable {
     }
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
-    }
-    
-    //methods
-    @Override
-    public String toString() {
-        return "Product{" + "id=" + id + ", title=" + title + ", description=" + description + ", delivery=" + delivery + '}';
     }
 }

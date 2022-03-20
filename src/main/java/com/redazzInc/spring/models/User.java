@@ -5,13 +5,13 @@
 package com.redazzInc.spring.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
@@ -22,41 +22,37 @@ import javax.persistence.ManyToMany;
 public class User implements Serializable {
     //properties
     @Id
+    @Column(unique = true)
     private String username;
-    @Column(nullable = false)
-    private String passwd;
     private int active;
+    @Column(nullable = false)
+    private String password;
     
     //relationships
-    @ManyToMany
-    @JoinTable(
-        name = "user_roles", 
-        joinColumns = @JoinColumn(name = "username"), 
-        inverseJoinColumns = @JoinColumn(name = "role_name")
-    )
-    private List<Role> roles = new ArrayList<Role>();
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "test")
+    private List<Role> roles;
     
     //constructors
-    public User(String username, String passwd, int active, List<Role> roles) {
+    public User(String username, int active, String password, List<Role> roles) {
         this.username = username;
-        this.passwd = passwd;
         this.active = active;
+        this.password = password;
         this.roles = roles;
+    }
+    public User(String username, int active, String password) {
+        this.username = username;
+        this.active = active;
+        this.password = password;
     }
     public User() {}
     
-    //getters & setters
+    //setters & getters
     public String getUsername() {
         return username;
     }
     public void setUsername(String username) {
         this.username = username;
-    }
-    public String getPasswd() {
-        return passwd;
-    }
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
     }
     public int getActive() {
         return active;
@@ -64,16 +60,19 @@ public class User implements Serializable {
     public void setActive(int active) {
         this.active = active;
     }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public List<Role> getRoles() {
         return roles;
     }
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-    
-    //methods
-    @Override
-    public String toString() {
-        return "User{" + "username=" + username + ", passwd=" + passwd + ", active=" + active + ", roles=" + roles + '}';
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 }

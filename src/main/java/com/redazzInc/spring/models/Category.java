@@ -5,7 +5,6 @@
 package com.redazzInc.spring.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,26 +21,30 @@ import javax.persistence.OneToMany;
  * @author kyzer
  */
 @Entity
-public class Category implements Serializable {
+public class Category  implements Serializable {
     //properties
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String category;
     
     //relationships
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_category", referencedColumnName = "id")
-    private List<Product> products = new ArrayList<Product>();
+    @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false)
+    private List<Product> products;
     
     //constructors
+    public Category(String category, List<Product> products) {
+        this.category = category;
+        this.products = products;
+    }
     public Category(String category) {
         this.category = category;
     }
     public Category() {}
     
-    //getters & setters
+    //setters & getters
     public long getId() {
         return id;
     }
@@ -51,17 +54,13 @@ public class Category implements Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
-
     public List<Product> getProducts() {
         return products;
     }
-
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-    public void addProduct(Product p) {
-        this.products.add(p);
+    public void addProduct(Product product) {
+        this.products.add(product);
     }
-    
 }
-  
