@@ -69,4 +69,10 @@ public class Product  implements Serializable {
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
     }
+    
+    //methods
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", title=" + title + ", description=" + description + ", delivery=" + delivery + '}';
+    }
 }

@@ -55,5 +55,11 @@ public class Application implements CommandLineRunner {
         cs.create(category1);
         cs.create(category2);
         cs.create(category3);
+        
+        
+        for(Product p : ps.readByTitle("Title fourth product"))
+            System.out.println("++++++++++++++++++++++ " + p);
+        
+        
     }
 }
